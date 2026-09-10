@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LaundryConnect Prototype</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f3ff;color:#24213a}.wrap{max-width:1000px;margin:0 auto;padding:28px}.hero{background:linear-gradient(135deg,#6c5ce7,#9b8cff);color:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 35px #5144a330}.hero h1{margin:0 0 8px;font-size:34px}.hero p{margin:0;opacity:.92}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.stat{background:#fff;padding:18px;border-radius:16px;box-shadow:0 4px 18px #0000000d}.stat b{font-size:25px;display:block}.section{margin-top:24px}.section h2{font-size:22px}.machines{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 20px #0000000d;border:1px solid #ece9f8}.top{display:flex;justify-content:space-between;align-items:center}.machine{font-size:20px;font-weight:700}.badge{padding:7px 11px;border-radius:999px;font-size:13px;font-weight:700}.available{background:#e5faef;color:#12834c}.occupied{background:#ffe7e7;color:#c43b3b}.maintenance{background:#fff3d7;color:#9a6a00}.time{margin:16px 0;color:#67627b}.bar{height:8px;background:#eeeaf8;border-radius:99px;overflow:hidden}.fill{height:100%;background:#7567e8;border-radius:99px}.btn{border:0;border-radius:11px;padding:11px 15px;font-weight:700;cursor:pointer;background:#6c5ce7;color:white}.btn:disabled{background:#ddd8ea;color:#777}.notice{margin-top:20px;background:#fff;padding:18px;border-radius:16px;border-left:5px solid #6c5ce7;display:none}.footer{text-align:center;color:#777;margin:28px 0 5px;font-size:13px}@media(max-width:700px){.machines,.stats{grid-template-columns:1fr}.wrap{padding:16px}}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="hero"><h1>🧺 LaundryConnect</h1><p>Check washing-machine availability before you walk to the laundry room.</p></div>
+  <div class="stats">
+    <div class="stat"><span>Available</span><b id="availableCount">2</b></div>
+    <div class="stat"><span>Running</span><b id="runningCount">2</b></div>
+    <div class="stat"><span>Total machines</span><b>4</b></div>
+  </div>
+  <div class="section"><h2>Machine Status</h2><div class="machines">
+    <div class="card"><div class="top"><div class="machine">Machine 01</div><span class="badge available">AVAILABLE</span></div><div class="time">Ready to use</div><button class="btn" onclick="book(this)">Reserve</button></div>
+    <div class="card"><div class="top"><div class="machine">Machine 02</div><span class="badge occupied">OCCUPIED</span></div><div class="time">Estimated time left: <b>25 min</b></div><div class="bar"><div class="fill" style="width:55%"></div></div><br><button class="btn" onclick="notify(this)">🔔 Notify me</button></div>
+    <div class="card"><div class="top"><div class="machine">Machine 03</div><span class="badge available">AVAILABLE</span></div><div class="time">Ready to use</div><button class="btn" onclick="book(this)">Reserve</button></div>
+    <div class="card"><div class="top"><div class="machine">Machine 04</div><span class="badge occupied">OCCUPIED</span></div><div class="time">Estimated time left: <b>10 min</b></div><div class="bar"><div class="fill" style="width:80%"></div></div><br><button class="btn" onclick="notify(this)">🔔 Notify me</button></div>
+  </div></div>
+  <div id="notice" class="notice"></div>
+  <div class="footer">Project Better Tomorrow • Low-fidelity prototype • LaundryConnect</div>
+</div>
+<script>
+function show(msg){let n=document.getElementById('notice');n.textContent=msg;n.style.display='block'}
+function book(btn){btn.disabled=true;btn.textContent='Reserved ✓';show('Machine reserved successfully. This prototype demonstrates how a student could reserve an available machine.');}
+function notify(btn){btn.disabled=true;btn.textContent='Notification set ✓';show('You will be notified when this machine becomes available.');}
+</script>
+</body></html>
