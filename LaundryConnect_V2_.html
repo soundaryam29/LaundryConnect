@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LaundryConnect V2</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#243b72;color:#fff;padding:22px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:700}.tag{font-size:13px;opacity:.85}
+main{max-width:1050px;margin:30px auto;padding:0 20px}.hero,.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 5px 20px #0001}
+.hero{margin-bottom:20px}h1{margin:0 0 8px}.sub{color:#65708a}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.stat{padding:16px;border-radius:14px;background:#f0f3f9}
+.num{font-size:26px;font-weight:700}.label{font-size:13px;color:#65708a}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.machine{font-size:19px;font-weight:700}.badge{padding:6px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.available{background:#dff7e8;color:#168247}.running{background:#ffe5e5;color:#c53636}
+.time{margin:18px 0;color:#4f5b73}.time strong{color:#172033}.actions{display:flex;gap:9px;flex-wrap:wrap}
+button{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer}.primary{background:#243b72;color:white}.secondary{background:#edf1f8;color:#243b72}
+.notice{margin-top:20px;padding:16px;border-radius:13px;background:#fff7d9;display:none}
+footer{text-align:center;color:#7a8499;padding:30px}
+@media(max-width:700px){.grid,.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="logo">🧺 LaundryConnect <span style="font-size:14px">V2</span></div><div class="tag">Check • Book • Wash • Save Time</div></header>
+<main>
+<section class="hero">
+<h1>Hostel Laundry Dashboard</h1>
+<div class="sub">Check machine availability before visiting the laundry area.</div>
+<div class="stats">
+<div class="stat"><div class="num">4</div><div class="label">Total Machines</div></div>
+<div class="stat"><div class="num">2</div><div class="label">Available Now</div></div>
+<div class="stat"><div class="num">2</div><div class="label">Running</div></div>
+</div>
+</section>
+<section class="grid">
+<div class="card"><div class="row"><div class="machine">Machine 01</div><span class="badge available">AVAILABLE</span></div><div class="time">Ready to use</div><div class="actions"><button class="primary" onclick="book(1)">📅 Book Machine</button><button class="secondary" onclick="notify(1)">🔔 Notify Me</button></div></div>
+<div class="card"><div class="row"><div class="machine">Machine 02</div><span class="badge running">OCCUPIED</span></div><div class="time">Estimated completion: <strong>25 minutes</strong></div><div class="actions"><button class="secondary" onclick="notify(2)">🔔 Notify Me</button></div></div>
+<div class="card"><div class="row"><div class="machine">Machine 03</div><span class="badge available">AVAILABLE</span></div><div class="time">Ready to use</div><div class="actions"><button class="primary" onclick="book(3)">📅 Book Machine</button><button class="secondary" onclick="notify(3)">🔔 Notify Me</button></div></div>
+<div class="card"><div class="row"><div class="machine">Machine 04</div><span class="badge running">OCCUPIED</span></div><div class="time">Estimated completion: <strong>10 minutes</strong></div><div class="actions"><button class="secondary" onclick="notify(4)">🔔 Notify Me</button></div></div>
+</section>
+<div class="notice" id="notice"></div>
+</main>
+<footer>Prototype for Project Better Tomorrow • User-tested V2</footer>
+<script>
+function show(msg){const n=document.getElementById('notice');n.textContent=msg;n.style.display='block';setTimeout(()=>n.style.display='none',3500)}
+function book(n){show('✅ Machine '+String(n).padStart(2,'0')+' booked successfully (prototype simulation).')}
+function notify(n){show('🔔 Notification set for Machine '+String(n).padStart(2,'0')+'.')}
+</script>
+</body>
+</html>
